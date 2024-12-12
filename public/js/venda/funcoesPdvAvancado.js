@@ -9,9 +9,12 @@ function colocarProdutosNaMesa(id, item, seProdutoEsgotado) {
     }
 
     const rota = getDomain() + "/pdvDiferencial/colocarProdutosNaMesa/" + id;
-    modalMensagemAdicionandoProdutosAMessa();
+    //modalMensagemAdicionandoProdutosAMessa();
     $.get(rota, function (data, status) {
-        obterOultimoProdutoColocadoNaMesa('ultimo');
+        $(".tabela-de-produto tbody").empty();
+        obterProdutosDaMesa();
+        //obterOultimoProdutoColocadoNaMesa('ultimo');
+        obterValorTotalDosProdutosNaMesa();
         calcularTroco();
 
     }).done(function() {
@@ -95,7 +98,7 @@ function alterarAquantidadeDeUmProdutoNaMesa(id, quantidade, element) {
     }
 
     if (quantidade > 0 && quantidade != '') {
-        modalValidacao('Aplicando', 'Aguarde');
+        //modalValidacao('Aplicando', 'Aguarde');
 
         var rota = getDomain() + "/pdvDiferencial/alterarAquantidadeDeUmProdutoNaMesa/" + id + "/" + quantidade;
         $.get(rota, function (data, status) {
